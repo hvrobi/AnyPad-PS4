@@ -1,0 +1,86 @@
+AnyPad USB Bridge
+=================
+
+Ez a fájl a projektbe átvett, portolt vagy abból származtatott külső kódot
+tartja nyilván. A 0. fázisban csak a váz készült el: még NINCS átvett kód.
+A "Felhasznált részek" táblázatokat a későbbi fázisok töltik ki, minden
+átvételkor ugyanabban a commitban.
+
+A projekt licence: GPL-3.0-or-later (a két GPL-es forrásprojekt miatt
+kötelezően). Az átvett fájlokban a szerzői jogi és licencjelöléseket
+változatlanul meg kell őrizni, a módosítást a fájl fejlécében jelölni kell
+(GPL-3.0 5. a) pont).
+
+
+1. AnyPad-PS4
+-------------
+Forrás:        https://github.com/Vld439/AnyPad-PS4
+Elemzett tükör: https://github.com/hvrobi/AnyPad-PS4
+Elemzett commit: 2556e693458b5e9b06485aa934da74e6e0c26535 (0.2.2-beta)
+Licenc:        GPL-3.0-or-later (LICENSE)
+Szerzők:       Vld439 (PS4-port), elmonomalvad0 (AnyPad PS5, amiből a port
+               készült: https://codeberg.org/elmonomalva0/Any-Pad-ps5)
+Megjegyzés:    A forrásfájlokban nincs egyedi copyright-fejléc; a szerzőség a
+               git-történetből és a README "Créditos/Credits" részéből
+               következik. A README kéri, hogy származtatott műben
+               elmonomalvad0-t említsük és az eredeti projektre hivatkozzunk.
+               A README további forrásként említi: MissionControl (ndeadly),
+               SplashDown (seregonwar), shadPS4, Control4Free (MoHadiShibli),
+               NoSleep.js (Rich Tibbett, MIT – src/nosleep_media.h).
+
+Felhasznált részek (későbbi fázisok töltik ki):
+| Forrásfájl | Forrás-commit | Mi lett belőle (cél fájl) | Módosítás jellege | Fázis |
+|------------|---------------|---------------------------|-------------------|-------|
+| –          | –             | –                         | –                 | –     |
+
+
+2. rpi-dualsense-ps4-bridge
+---------------------------
+Forrás:        https://github.com/ShubhxYT/rpi-dualsense-ps4-bridge
+Elemzett tükör: https://github.com/hvrobi/rpi-dualsense-ps4-bridge
+Elemzett commit: 2945043fdf6bc914b200e3aec82a4031501fe827
+Licenc:        GPL-3.0-or-later (LICENSE)
+Harmadik fél:  legacy/generated/ps4_report_descriptor.{h,bin} a GP2040-CE
+               b136ec9250c2fd2f9734467c3a3872378aa29f62 commitjából
+               generálva, MIT licenc, Copyright (c) 2024 OpenStickCommunity
+               (THIRD_PARTY_NOTICES.md). Ha ezt átvesszük, az MIT-szöveget és
+               a jelölést is mellé kell tenni.
+
+Felhasznált részek (későbbi fázisok töltik ki):
+| Forrásfájl | Forrás-commit | Mi lett belőle (cél fájl) | Módosítás jellege | Fázis |
+|------------|---------------|---------------------------|-------------------|-------|
+| –          | –             | –                         | –                 | –     |
+
+
+3. ffsds4
+---------
+Forrás:        https://github.com/dogtopus/ffsds4
+Elemzett tükör: https://github.com/hvrobi/ffsds4
+Rögzített commit: 0827203660f59dfa80e36f9accf4aef0ea90a05e
+Licenc:        GPL-3.0-or-later (LICENSE.md, SPDX-fejlécek)
+Copyright:     Copyright (C) 2021- dogtopus
+               ffsds4lib/__init__.py: "Based on python-functionfs HID example
+               by Vincent Pelletier, Copyright (C) 2018-2020"
+
+Felhasznált részek (későbbi fázisok töltik ki):
+| Forrásfájl | Forrás-commit | Mi lett belőle (cél fájl) | Módosítás jellege | Fázis |
+|------------|---------------|---------------------------|-------------------|-------|
+| –          | –             | –                         | –                 | –     |
+
+
+4. Futásidejű függőségek (nem vendorolva, csak nyilvántartás)
+-------------------------------------------------------------
+- python-functionfs 0.9.2 – GPL-3.0-or-later, Copyright (C) 2018-2021
+  Vincent Pelletier (az ffsds4 használja; a 0. fázisban csak olvasásra
+  letöltve elemeztük, nem telepítettük).
+- pycryptodomex – az ffsds4 RSA-PSS aláírásához (licenc: BSD/Public Domain
+  vegyes; átvételkor ellenőrizendő).
+
+
+5. Ami szándékosan NEM része a projektnek
+-----------------------------------------
+- Semmilyen PS4-hitelesítési kulcs, sorozatszám vagy aláírás (key.pem,
+  serial.txt, sig.bin, ds4key.bin). Ezeket a felhasználó a saját,
+  jogszerűen birtokolt eszközéből, a repón kívül kezeli.
+- Az AnyPad-PS4 PS4-specifikus kimeneti oldala (ps4_vpad.c, kernel-
+  jogosultságemelés, libScePad/libSceUsbd/libSceMbus hívások).

@@ -1,0 +1,55 @@
+# AnyPad USB Bridge – .gitignore
+
+# --- PS4-hitelesítési anyag: SOHA nem kerülhet a repóba ---
+key.pem
+serial.txt
+sig.bin
+ds4key.bin
+*.pem
+*.der
+*.key
+ds4key*.bin
+**/ps4-controller-auth/
+ps4-controller-auth/
+auth/
+secrets/
+# nyers hitelesítési kihívások/válaszok és naplómentések
+*challenge*.bin
+*response*.bin
+*nonce*.bin
+
+# --- kicsomagolt / letöltött forrásprojektek (csak olvasásra) ---
+forras/*/
+forras/**/*.extracted/
+!forras/*.zip
+_extracted/
+vendor-src/
+
+# --- Banana Pro ellenőrző riportok (gépspecifikus adatokat tartalmazhatnak) ---
+banana_pro_report_*.txt
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# --- C build ---
+/build/
+*.o
+*.a
+*.so
+
+# --- futásidejű állapot, naplók ---
+*.log
+*.pid
+*.sock
+
+# --- szerkesztő és OS ---
+.DS_Store
+*.swp
+.idea/
+.vscode/
